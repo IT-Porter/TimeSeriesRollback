@@ -1,0 +1,35 @@
+spring:
+  application:
+            name: TimeSeriesRollback
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+#    producer:
+#      bootstrap-servers: ${KAFKA_HOST:192.168.56.88}:${KAFKA_PORT:9092}
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: ${KAFKA_HOST:192.168.56.88}:${KAFKA_PORT:9092}
+      group-id: consumerGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      missing-topics-fatal: false
+
+
+  datasource:
+    url: jdbc:mysql://192.168.56.88/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  redis:
+    host: 192.168.56.88
+    port: 6379
+    redisson:
+      file: classpath:redisson.yaml
+
+

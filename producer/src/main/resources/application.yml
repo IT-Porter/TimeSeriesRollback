@@ -1,0 +1,17 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: producer
+  kafka:
+    producer:
+      bootstrap-servers: ${KAFKA_HOST:192.168.56.88}:${KAFKA_PORT:9092}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+
