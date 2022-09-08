@@ -24,8 +24,7 @@ public class BreakRecoverConfig {
     private final RedisUtil redisUtil;
 
     private final ReportService reportService;
-
-    private static Integer index = 0;
+    
     /**
      *  check every 10 seconds:
      *  try to start thread to handle the queue data
@@ -55,10 +54,4 @@ public class BreakRecoverConfig {
 
     }
 
-    @Scheduled(cron = "* * * * *  ? ")
-    public void breakRecoverCreator() {
-
-        redisUtil.zAdd(CacheConstants.SENSOR_LAST_HANLE_TIME,BreakRecoverConfig.index.toString(),System.currentTimeMillis()/1000);
-        BreakRecoverConfig.index++;
-    }
 }
