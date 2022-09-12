@@ -2,8 +2,8 @@
 
 ## Introduction
 
-IoT health monitoring: All sensors' data was transferred to the server via MQ,each sensors' data is time series.The server analysis each sensor's data live time to tell is health or not. The key is must keep each sensor's data strictly in time series. For some reason,there are some sensors' data records maybe out of order,then we have to roll back to the point and recalculate.Also, we need consider some complex scenes,eg: some new sensors added randomly while some stopped randomly,some sensors' data have long time interval while some are high frequency data...
-This solution is exactly for such a scenes. 
+IoT health monitoring: All sensors' data was transferred to the server via MQ, each sensor’s data is time series. The server analysis each sensor's data live time to tell is healthy or not. The key is must keep each sensor's data strictly in time series. For some reason, there are some sensors' data records that may be out of order, then we have to roll back to the point and recalculate. Also, we need to consider some complex scenes, eg: some new sensors were added randomly while some stopped randomly, some sensors' data have long time intervals while some are high-frequency data...
+This solution is exactly for such scenes.
 
 ## Main dependencies and components
 

@@ -41,9 +41,7 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public void handle(String senorId) {
 
-
         CompletableFuture.runAsync(() -> {
-
             String singleGroupLockKey=CacheConstants.SENSOR_GROUP_LOCK.concat(senorId);
             RLock lock = redissonClient.getLock(singleGroupLockKey);
 

@@ -39,17 +39,17 @@ public class Consumer {
                 String singleGroupLockKey=CacheConstants.SENSOR_GROUP_LOCK
                         .concat(message.getSenorId().toString());
                 RLock lock = redissonClient.getLock(singleGroupLockKey);
-                if(lock.isLocked())
-                {
-                    redisUtil.lLeftPush(
-                            CacheConstants.SENSOR_GROUP_QUEUE.concat(message.getSenorId().toString()),
-                            message
-                    );
-                }
-                else
+
+                redisUtil.lLeftPush(
+                        CacheConstants.SENSOR_GROUP_QUEUE.concat(message.getSenorId().toString()),
+                        message
+                );
+
+                if(!lock.isLocked())
                 {
 
                     reportService.handle(message.getSenorId().toString());
+
                     redisUtil.zAdd(
                             CacheConstants.SENSOR_LAST_HANLE_TIME,
                             message.getSenorId().toString(),

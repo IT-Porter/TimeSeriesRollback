@@ -21,15 +21,7 @@ class TimeSeriesRollbackApplicationTests {
     @Autowired
     private RedisUtil redisUtil;
 
-    @Test
-    void redisTest()
-    {
-        long t= System.currentTimeMillis();
 
-        redisUtil.zAdd("zsettest","101",t);
-        System.out.println("first set time"+t);
-        redisUtil.zAdd("zsettest","101",t-1000);
-    }
 
     @Test
     void contextLoads() throws InterruptedException {
